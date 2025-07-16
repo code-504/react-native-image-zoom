@@ -33,6 +33,7 @@ const Zoomable: ForwardRefRenderFunction<ImageZoomRef, ImageZoomProps> = (
     onDoubleTap,
     onProgrammaticZoom,
     onResetAnimationEnd,
+    onScaleChange,
     onLayout,
     style = {},
     ...props
@@ -59,6 +60,7 @@ const Zoomable: ForwardRefRenderFunction<ImageZoomRef, ImageZoomProps> = (
     onDoubleTap,
     onProgrammaticZoom,
     onResetAnimationEnd,
+    onScaleChange,
     onLayout,
     ref,
   });

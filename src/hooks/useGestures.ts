@@ -8,6 +8,7 @@ import {
   withDecay,
   withTiming,
   WithTimingConfig,
+  useAnimatedReaction,
 } from 'react-native-reanimated';
 import { clamp } from '../utils/clamp';
 import { limits } from '../utils/limits';
@@ -52,6 +53,7 @@ export const useGestures = ({
   onSingleTap = () => {},
   onDoubleTap = () => {},
   onProgrammaticZoom = () => {},
+  onScaleChange = () => {},
   onResetAnimationEnd,
 }: ZoomableUseGesturesProps) => {
   const isInteracting = useRef(false);
@@ -403,6 +405,16 @@ export const useGestures = ({
     .onStart((event) => {
       runOnJS(onSingleTap)(event);
     });
+
+  useAnimatedReaction(
+    () => scale.value,
+    (current, previous) => {
+      if (current !== previous && onScaleChange) {
+        runOnJS(onScaleChange)(current);
+      }
+    },
+    [onScaleChange]
+  );
 
   const animatedStyle = useAnimatedStyle(
     () => ({

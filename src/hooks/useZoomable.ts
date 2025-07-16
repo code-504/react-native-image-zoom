@@ -23,6 +23,7 @@ export const useZoomable = ({
   onDoubleTap,
   onProgrammaticZoom,
   onResetAnimationEnd,
+  onScaleChange,
   onLayout,
   ref,
 }: UseZoomableProps) => {
@@ -52,6 +53,7 @@ export const useZoomable = ({
     onDoubleTap,
     onProgrammaticZoom,
     onResetAnimationEnd,
+    onScaleChange,
   });
   useZoomableHandle(ref, reset, zoom, getInfo);
 

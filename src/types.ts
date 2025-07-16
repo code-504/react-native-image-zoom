@@ -50,6 +50,7 @@ export type ProgrammaticZoomCallback = (event: {
   y: number;
 }) => void;
 
+export type OnScaleChangeCallback = (scale: number) => void;
 export type OnDoubleTapCallback = (zoomType: ZOOM_TYPE) => void;
 export type OnProgrammaticZoomCallback = (zoomType: ZOOM_TYPE) => void;
 
@@ -189,6 +190,10 @@ export type ZoomProps = {
    * The values parameter provides additional detailed information for each animation value.
    */
   onResetAnimationEnd?: OnResetAnimationEndCallback;
+  /**
+   * A callback function that is called when the scale value changes.
+   */
+  onScaleChange?: OnScaleChangeCallback;
 };
 
 export type ZoomableProps = AnimateProps<ViewProps> & ZoomProps;
@@ -260,6 +265,7 @@ export type ZoomableUseGesturesProps = Pick<
     | 'onDoubleTap'
     | 'onProgrammaticZoom'
     | 'onResetAnimationEnd'
+    | 'onScaleChange'
   >;
 
 export type ZoomableRef = {
